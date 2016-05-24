@@ -65,10 +65,6 @@ install_grails()
   GRAILS_ZIP_FILE="grails-heroku.zip"
   echo "-----> Installing Grails $VER_TO_INSTALL....."
 
-  status=$(curl --retry 3 --silent --head -w %{http_code} -L ${GRAILS_URL} -o /dev/null)
-  if [ "$status" != "200" ]; then
-    GRAILS_URL=${GRAILS_ALT_URL}
-  fi
   curl --retry 3 --silent --max-time 150 --location $GRAILS_URL -o $GRAILS_ZIP_FILE
 
   # Error checking
